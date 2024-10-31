@@ -133,18 +133,7 @@ class SampleSettingTab extends PluginSettingTab {
 		}
 
 		
-
-
-	new Setting(containerEl)
-		.setName('Setting #2')
-		.setDesc('It\'s also a secret')
-		.addText((text: TextComponent) => text
-			.setPlaceholder('Enter your other secret')
-			.setValue(this.plugin.settings.mySetting)
-			.onChange(async (value: string) => {
-				this.plugin.settings.mySetting = value;
-				await this.plugin.saveSettings();
-			}));
+ removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
 		 
 	}
 }
