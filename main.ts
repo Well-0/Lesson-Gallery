@@ -132,16 +132,7 @@ class SampleSettingTab extends PluginSettingTab {
 			onChange(callback: (value: string) => Promise<void>): void;
 		}
 
-		new Setting(containerEl)
-			.setName('Setting #1')
-			.setDesc('It\'s a secret')
-			.addText((text: TextComponent) => text
-				.setPlaceholder('Enter your secret')
-				.setValue(this.plugin.settings.mySetting)
-				.onChange(async (value: string) => {
-					this.plugin.settings.mySetting = value;
-					await this.plugin.saveSettings();
-				}));
+		
 
 
 	new Setting(containerEl)
