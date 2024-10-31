@@ -120,15 +120,40 @@ class SampleSettingTab extends PluginSettingTab {
 
 		containerEl.empty();
 
+		interface SettingInterface {
+			setName(name: string): SettingInterface;
+			setDesc(desc: string): SettingInterface;
+			addText(callback: (text: TextComponent) => void): SettingInterface;
+		}
+
+		interface TextComponent {
+			setPlaceholder(placeholder: string): TextComponent;
+			setValue(value: string): TextComponent;
+			onChange(callback: (value: string) => Promise<void>): void;
+		}
+
 		new Setting(containerEl)
 			.setName('Setting #1')
 			.setDesc('It\'s a secret')
-			.addText(text => text
+			.addText((text: TextComponent) => text
 				.setPlaceholder('Enter your secret')
 				.setValue(this.plugin.settings.mySetting)
-				.onChange(async (value) => {
+				.onChange(async (value: string) => {
 					this.plugin.settings.mySetting = value;
 					await this.plugin.saveSettings();
 				}));
+
+
+	new Setting(containerEl)
+		.setName('Setting #2')
+		.setDesc('It\'s also a secret')
+		.addText((text: TextComponent) => text
+			.setPlaceholder('Enter your other secret')
+			.setValue(this.plugin.settings.mySetting)
+			.onChange(async (value: string) => {
+				this.plugin.settings.mySetting = value;
+				await this.plugin.saveSettings();
+			}));
+		 
 	}
 }

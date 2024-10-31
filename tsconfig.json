@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    //The compiler option "strict" should be enabled to reduce type errors
+    "strict": true,
+
     "baseUrl": ".",
     "inlineSourceMap": true,
     "inlineSources": true,
